@@ -10,7 +10,7 @@ export class ListService {
 
     constructor(private http: Http) { }
 
-    private serverApi= 'http://localhost:3000';
+    private serverApi= 'http://localhost:3030';
 
 
     public getAllLists(): Observable<List[]> {

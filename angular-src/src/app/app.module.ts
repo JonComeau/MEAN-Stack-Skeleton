@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { AddListComponent } from './add-list/add-list.component';
 import { ViewListComponent } from './view-list/view-list.component';
 import { ListService } from './services/list.service';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddListComponent,
-    ViewListComponent
+    ViewListComponent,
+    SkeletonComponent
   ],
   imports: [
     BrowserModule,

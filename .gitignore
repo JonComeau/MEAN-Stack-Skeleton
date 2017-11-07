@@ -2,11 +2,13 @@
 
 # compiled output
 /dist
+/public
 /tmp
 /out-tsc
 
 # dependencies
 /node_modules
+/angular/node_modules
 
 # IDEs and editors
 /.idea
