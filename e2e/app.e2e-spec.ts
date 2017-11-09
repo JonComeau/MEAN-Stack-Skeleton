@@ -8,7 +8,7 @@ describe('angular-src App', () => {
   });
 
   it('should display welcome message', () => {
-    page.navigateTo();
+    AppPage.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
