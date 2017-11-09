@@ -1,38 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import { List } from '../models/List';
+import { Observable } from 'rxjs/Observable';
+import { Skeleton } from '../models/Skeleton';
 
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ListService {
+export class SkeletonService {
 
     constructor(private http: Http) { }
 
     private serverApi= 'http://localhost:3030';
 
+    public getAllSkeletons(): Observable<Skeleton[]> {
 
-    public getAllLists(): Observable<List[]> {
-
-        const URI = `${this.serverApi}/bucketlist/`;
+        const URI = `${this.serverApi}/skeleton/`;
         return this.http.get(URI)
             .map(res => res.json())
-            .map(res => <List[]>res.lists);
+            .map(res => <Skeleton[]>res.lists);
     }
 
-    public deleteList(listId: string) {
-      const URI = `${this.serverApi}/bucketlist/${listId}`;
+    public deleteSkeleton(listId: string) {
+      const URI = `${this.serverApi}/skeleton/${listId}`;
         const headers = new Headers;
         headers.append('Content-Type', 'application/json');
         return this.http.delete(URI, {headers})
         .map(res => res.json());
     }
 
-    public addList(list: List) {
-        const URI = `${this.serverApi}/bucketlist/`;
+    public addSkeleton(skeleton: Skeleton) {
+        const URI = `${this.serverApi}/skeleton/`;
         const headers = new Headers;
-        const body = JSON.stringify({title: list.title, description: list.description, category: list.category});
+        const body = JSON.stringify({title: skeleton.title, description: skeleton.description});
         console.log(body);
         headers.append('Content-Type', 'application/json');
         return this.http.post(URI, body ,{headers: headers})

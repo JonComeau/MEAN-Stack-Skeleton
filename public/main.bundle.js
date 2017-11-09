@@ -48,7 +48,7 @@ module.exports = "<div class=\"container\">\n  <form (ngSubmit)=\"onSubmit()\">\
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_list_service__ = __webpack_require__("../../../../../src/app/services/list.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_list_service__ = __webpack_require__("../../../../../src/app/services/skeleton.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -76,7 +76,7 @@ var AddListComponent = (function () {
     AddListComponent.prototype.onSubmit = function () {
         var _this = this;
         console.log(this.newList.category);
-        this.listServ.addList(this.newList).subscribe(function (response) {
+        this.listServ.addSkeleton(this.newList).subscribe(function (response) {
             console.log(response);
             if (response.success === true) {
                 _this.addList.emit(_this.newList);
@@ -86,7 +86,7 @@ var AddListComponent = (function () {
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* Output */])(),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* EventEmitter */])
-    ], AddListComponent.prototype, "addList", void 0);
+    ], AddListComponent.prototype, "addSkeleton", void 0);
     AddListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'app-add-list',
@@ -170,7 +170,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__add_list_add_list_component__ = __webpack_require__("../../../../../src/app/add-list/add-list.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__view_list_view_list_component__ = __webpack_require__("../../../../../src/app/view-list/view-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_list_service__ = __webpack_require__("../../../../../src/app/services/list.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_list_service__ = __webpack_require__("../../../../../src/app/services/skeleton.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -237,20 +237,20 @@ var ListService = (function () {
         this.serverApi = 'http://localhost:3000';
     }
     ListService.prototype.getAllLists = function () {
-        var URI = this.serverApi + "/bucketlist/";
+        var URI = this.serverApi + "/skeleton/";
         return this.http.get(URI)
             .map(function (res) { return res.json(); })
             .map(function (res) { return res.lists; });
     };
     ListService.prototype.deleteList = function (listId) {
-        var URI = this.serverApi + "/bucketlist/" + listId;
+        var URI = this.serverApi + "/skeleton/" + listId;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */];
         headers.append('Content-Type', 'application/json');
         return this.http.delete(URI, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     ListService.prototype.addList = function (list) {
-        var URI = this.serverApi + "/bucketlist/";
+        var URI = this.serverApi + "/skeleton/";
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */];
         var body = JSON.stringify({ title: list.title, description: list.description, category: list.category });
         console.log(body);
@@ -290,7 +290,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/view-list/view-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2> Awesome Bucketlist App </h2>\n\n  <!-- Table starts here -->\n  <table id=\"table\">\n      <thead>\n        <tr>\n          <th>Priority Level</th>\n          <th>Title</th>\n          <th>Description</th>\n          <th> Delete </th>\n\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let list of lists\">\n          <td>{{list.category}}</td>\n          <td>{{list.title}}</td>\n          <td>{{list.description}}</td>\n          <td> <button type=\"button\" (click)=\"deleteList(list); $event.stopPropagation();\">Delete</button></td>\n\n        </tr>\n      </tbody>\n   </table>\n\n\n   <app-add-list (addList)='onAddList($event)'> </app-add-list>"
+module.exports = "<h2> Awesome Bucketlist App </h2>\n\n  <!-- Table starts here -->\n  <table id=\"table\">\n      <thead>\n        <tr>\n          <th>Priority Level</th>\n          <th>Title</th>\n          <th>Description</th>\n          <th> Delete </th>\n\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let list of lists\">\n          <td>{{list.category}}</td>\n          <td>{{list.title}}</td>\n          <td>{{list.description}}</td>\n          <td> <button type=\"button\" (click)=\"deleteSkeleton(list); $event.stopPropagation();\">Delete</button></td>\n\n        </tr>\n      </tbody>\n   </table>\n\n\n   <app-add-list (addSkeleton)='onAddList($event)'> </app-add-list>"
 
 /***/ }),
 
@@ -300,7 +300,7 @@ module.exports = "<h2> Awesome Bucketlist App </h2>\n\n  <!-- Table starts here 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewListComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_list_service__ = __webpack_require__("../../../../../src/app/services/list.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_list_service__ = __webpack_require__("../../../../../src/app/services/skeleton.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -325,12 +325,12 @@ var ViewListComponent = (function () {
     ViewListComponent.prototype.loadLists = function () {
         var _this = this;
         // Get all lists from server and update the lists property
-        this.listServ.getAllLists().subscribe(function (response) { return _this.lists = response; });
+        this.listServ.getAllSkeletons().subscribe(function (response) { return _this.lists = response; });
     };
-    // deleteList. The deleted list is being filtered out using the .filter method
+    // deleteSkeleton. The deleted list is being filtered out using the .filter method
     ViewListComponent.prototype.deleteList = function (list) {
         var _this = this;
-        this.listServ.deleteList(list._id).subscribe(function (response) {
+        this.listServ.deleteSkeleton(list._id).subscribe(function (response) {
             return _this.lists = _this.lists.filter(function (lists) { return lists !== list; });
         });
     };

@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const bucketlist = require('./controllers/bucketlist');
+const skeleton = require('./controllers/skeleton');
 
 const config = require('./config/database');
 mongoose.connect(config.database, { useMongoClient: true });
@@ -31,8 +31,8 @@ app.get('/', (req,res) => {
     res.send("Invalid page");
 });
 
-//Routing all HTTP requests to /bucketlist to bucketlist controller
-app.use('/bucketlist', bucketlist);
+//Routing all HTTP requests to /skeleton to skeleton controller
+app.use('/skeleton', skeleton);
 
 //Listen to port 3000
 app.listen(port, () => {

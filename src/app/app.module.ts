@@ -4,17 +4,12 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
-
-import { AddListComponent } from './add-list/add-list.component';
-import { ViewListComponent } from './view-list/view-list.component';
-import { ListService } from './services/list.service';
+import { SkeletonService } from './services/skeleton.service';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddListComponent,
-    ViewListComponent,
     SkeletonComponent
   ],
   imports: [
@@ -22,7 +17,7 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
     HttpModule,
     FormsModule
   ],
-  providers: [ListService],
+  providers: [SkeletonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
