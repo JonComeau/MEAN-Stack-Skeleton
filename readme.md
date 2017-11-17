@@ -89,3 +89,7 @@ The e2e directory is the space for all testing code. I haven't written any tests
 Thanks to SitePoint for developing such a great tutorial on the MEAN Stack. I used this tutorial for the basis of setting up my project.
 
 * [MEAN Stack: Developing an app with Angular 2+ and the Angular CLI](https://www.sitepoint.com/mean-stack-angular-2-angular-cli/)
+
+### Copyright
+
+Copyright 2017, Jonathan Comeau, All rights reserved.
