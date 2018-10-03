@@ -1,4 +1,4 @@
-# MEAN 4 Working Skeleton
+# MEAN 5 Working Skeleton
 
 ## Description
 
